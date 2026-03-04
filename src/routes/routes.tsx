@@ -34,16 +34,16 @@ export const router = createBrowserRouter([
         element: <QuizList />,
       },
       {
+        path: "quiz/create",
+        element: <QuizCreate />,
+      },
+      {
         path: "quiz/:id",
         element: <QuizDetail />,
       },
       {
         path: "quiz/:id/play",
         element: <QuizPlay />,
-      },
-      {
-        path: "quiz/create",
-        element: <QuizCreate />,
       },
       {
         path: "users",
@@ -58,12 +58,12 @@ export const router = createBrowserRouter([
         element: <QuestionCreate />,
       },
       {
-        path: "quiz/:quizId/questions/:questionId",
-        element: <QuestionDetail />,
-      },
-      {
         path: "quiz/:quizId/questions/:questionId/edit",
         element: <QuestionEdit />,
+      },
+      {
+        path: "quiz/:quizId/questions/:questionId",
+        element: <QuestionDetail />,
       },
       {
         path: "*",
