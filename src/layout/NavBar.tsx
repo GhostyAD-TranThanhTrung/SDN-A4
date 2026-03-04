@@ -1,16 +1,26 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { logoutUser } from "../redux/loginSlide";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { isLoggedIn, isAdmin, user, loading } = useAppSelector(
     (state) => state.login,
   );
 
   const handleLogout = () => {
     dispatch(logoutUser());
+    navigate("/login");
+  };
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
+  const handleRegister = () => {
+    navigate("/register");
   };
 
   return (
@@ -24,12 +34,15 @@ export default function NavBar() {
           {isLoggedIn && (
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/quiz">
-                Quiz list
+                Quiz List
               </Nav.Link>
               {isAdmin && (
                 <>
-                  <Nav.Link as={Link} to="/admin/quiz/create">
+                  <Nav.Link as={Link} to="/quiz/create">
                     Create Quiz
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/admin/users">
+                    Manage Users
                   </Nav.Link>
                 </>
               )}
@@ -46,11 +59,15 @@ export default function NavBar() {
 
           {!isLoggedIn ? (
             <div className="d-flex gap-2">
-              <Button href="/login" variant="primary" disabled={loading}>
+              <Button
+                onClick={handleLogin}
+                variant="primary"
+                disabled={loading}
+              >
                 {loading ? "Loading..." : "Login"}
               </Button>
               <Button
-                href="/register"
+                onClick={handleRegister}
                 variant="outline-light"
                 disabled={loading}
               >
