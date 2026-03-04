@@ -88,7 +88,7 @@ export const loginSlice = createSlice({
                 state.isAdmin = action.payload.admin;
                 state.user = action.payload.user;
             })
-            .addCase(loginUser.rejected, (state, action) => {
+            .addCase(loginUser.rejected, (state) => {
                 state.loading = false;
                 state.isLoggedIn = false;
                 state.isAdmin = false;
@@ -103,7 +103,7 @@ export const loginSlice = createSlice({
                 state.loading = false;
                 // Note: Registration doesn't automatically log user in
             })
-            .addCase(registerUser.rejected, (state, action) => {
+            .addCase(registerUser.rejected, (state) => {
                 state.loading = false;
             })
             // Handle logout
@@ -117,7 +117,7 @@ export const loginSlice = createSlice({
                 state.user = null;
                 state.token = null;
             })
-            .addCase(logoutUser.rejected, (state, action) => {
+            .addCase(logoutUser.rejected, (state) => {
                 state.loading = false;
             })
             // Handle checking auth status
@@ -138,7 +138,7 @@ export const loginSlice = createSlice({
                     state.token = null;
                 }
             })
-            .addCase(checkAuthStatus.rejected, (state, action) => {
+            .addCase(checkAuthStatus.rejected, (state) => {
                 state.loading = false;
                 state.isLoggedIn = false;
                 state.isAdmin = false;

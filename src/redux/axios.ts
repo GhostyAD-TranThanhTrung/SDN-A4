@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { LoginDto, CreateUserDto, User } from "../types/userType";
-import type { Quiz, CreateQuizDto } from "../types/quizType";
-import type { Question, CreateQuestionDto } from "../types/questionType";
+import type { CreateQuizDto } from "../types/quizType";
+import type {  CreateQuestionDto } from "../types/questionType";
 
 
 
